@@ -1,4 +1,17 @@
 <?php
+/**
+ * amis的page组件
+ *
+ * PHP version 8.0
+ *
+ * @package Aimanong\Amischs\module_type
+ * @access public
+ * @author 阮三 <zyzyzzy@vip.qq.com>
+ * @copyright 2023 amischs
+ * @example /src/module_type/
+ * @version 1.0.0
+ *
+ */
 
 namespace Aimanong\Amischs\module_type;
 
@@ -8,50 +21,148 @@ use Aimanong\Amischs\Condition;
 use Aimanong\Amischs\Module;
 use Aimanong\Amischs\SchemaNode;
 
+
 class Page extends Module
 {
     public string $type = 'page';
-    protected SchemaNode|string|array $title = ''; //页面标题
-    protected SchemaNode|string|array $subTitle = ''; //页面副标题
-    protected Remark|array $remark = [];  //标题附近会出现一个提示图标,鼠标放上去会提示该内容
-    protected SchemaNode|string|array $aside = ''; //往页面的边栏区域加内容
-    protected bool $asideResizor = false; //页面的边栏区域宽度是否可以调整
-    protected int $asideMinWidth = 0;  //页面边栏区域的最小宽度 单位像素(px)
-    protected int $asideMaxWidth = 0; //页面边栏区域的最大宽度 单位像素(px)
-    protected bool $asideSticky = true; //页面边栏区域是否固定
-    protected SchemaNode|string|array $toolbar = ''; //往页面的右上角加内容，需要注意的是，当有 title 时，该区域在右上角，没有时该区域在顶部
-    protected array $cssVars = []; //自定义CSS变量
-    protected ClassName|string $toolbarClassName = ''; //Toolbar dom 类名
-    protected ClassName|string $bodyClassName = ''; //Body dom 类名
-    protected ClassName|string $asideClassName = ''; //Aside dom 类名
-    protected ClassName|string $headerClassName = ''; //Header 区域 dom 类名
-    protected Api|string $initApi = ''; //Page 用来获取初始数据的 api。返回的数据可以整个 page 级别使用。
-    protected Condition|string $initFetchOn = ''; //是否起始拉取 initApi, 通过表达式配置
-    protected int $interval = 0; //刷新时间(最小 1000) 单位毫秒
-    protected bool $silentPolling = false; //配置刷新时是否显示加载动画
-    protected Condition|string $stopAutoRefreshWhen = ''; //通过表达式来配置停止刷新的条件
+    /**
+     * 页面标题
+     * @var SchemaNode|string|array
+     */
+    protected SchemaNode|string|array $title = '';
 
+    /**
+     * 页面副标题
+     * @var SchemaNode|string|array
+     */
+    protected SchemaNode|string|array $subTitle = '';
+
+    /**
+     * 标题附近会出现一个提示图标,鼠标放上去会提示该内容
+     * @var Remark|array
+     */
+    protected Remark|array $remark = [];
+
+    /**
+     * 往页面的边栏区域加内容
+     * @var SchemaNode|string|array
+     */
+    protected SchemaNode|string|array $aside = '';
+
+    /**
+     * 页面的边栏区域宽度是否可以调整
+     * @var bool
+     */
+    protected bool $asideResizor = false;
+
+    /**
+     * 页面边栏区域的最小宽度 单位像素(px)
+     * @var int
+     */
+    protected int $asideMinWidth = 0;
+
+    /**
+     * 页面边栏区域的最大宽度 单位像素(px)
+     * @var int
+     */
+    protected int $asideMaxWidth = 0;
+
+    /**
+     * 页面边栏区域是否固定
+     * @var bool
+     */
+    protected bool $asideSticky = true;
+
+    /**
+     * 往页面的右上角加内容，需要注意的是，当有 title 时，该区域在右上角，没有时该区域在顶部
+     * @var SchemaNode|string|array
+     */
+    protected SchemaNode|string|array $toolbar = '';
+
+    /**
+     * 自定义CSS变量
+     * @var array
+     */
+    protected array $cssVars = [];
+
+    /**
+     * Toolbar dom 类名
+     * @var ClassName|string
+     */
+    protected ClassName|string $toolbarClassName = '';
+
+    /**
+     * Body dom 类名
+     * @var ClassName|string
+     */
+    protected ClassName|string $bodyClassName = '';
+
+    /**
+     * Aside dom 类名
+     * @var ClassName|string
+     */
+    protected ClassName|string $asideClassName = '';
+
+    /**
+     * Header 区域 dom 类名
+     * @var ClassName|string
+     */
+    protected ClassName|string $headerClassName = '';
+
+    /**
+     * Page 用来获取初始数据的 api。返回的数据可以整个 page 级别使用
+     * @var Api|string
+     */
+    protected Api|string $initApi = '';
+
+    /**
+     * 是否起始拉取 initApi, 通过表达式配置
+     * @var Condition|string
+     */
+    protected Condition|string $initFetchOn = '';
+
+    /**
+     * 刷新时间(最小 1000) 单位毫秒
+     * @var int
+     */
+    protected int $interval = 0;
+
+    /**
+     * 配置刷新时是否显示加载动画
+     * @var bool
+     */
+    protected bool $silentPolling = false;
+
+    /**
+     * 通过表达式来配置停止刷新的条件
+     * @var Condition|string
+     */
+    protected Condition|string $stopAutoRefreshWhen = '';
+
+    /**
+     * @param SchemaNode|string|array $title
+     * @return $this
+     */
     public function setTitle(SchemaNode|string|array $title): static
     {
         $this->title = $title;
         return $this;
     }
-    public function 设置页面标题(SchemaNode|string|array $title): static
-    {
-        return $this->setTitle($title);
-    }
 
+    /**
+     * @param SchemaNode|string|array $subTitle
+     * @return $this
+     */
     public function setSubTitle(SchemaNode|string|array $subTitle): static
     {
         $this->subTitle = $subTitle;
         return $this;
     }
 
-    public function 设置页面副标题(SchemaNode|string|array $subTitle): static
-    {
-        return $this->setSubTitle($subTitle);
-    }
-
+    /**
+     * @param string|Remark $contentOrRemark
+     * @return $this
+     */
     public function setRemark(string|Remark $contentOrRemark): static
     {
         if($contentOrRemark instanceof Remark){
@@ -64,11 +175,10 @@ class Page extends Module
         return $this;
     }
 
-    public function 设置标题提示(string|Remark $提示内容或实例): static
-    {
-        return $this->setRemark($提示内容或实例);
-    }
-
+    /**
+     * @param SchemaNode|array|string $aside
+     * @return $this
+     */
     public function setAside(SchemaNode|array|string $aside): static
     {
         if(!empty($aside)){
@@ -77,55 +187,50 @@ class Page extends Module
         return $this;
     }
 
-    public function 设置左边栏区域内容(SchemaNode|array|string $内容): static
-    {
-        return $this->setAside($内容);
-    }
-
+    /**
+     * @param bool $asideResizor
+     * @return $this
+     */
     public function setAsideResizor(bool $asideResizor): static
     {
         $this->asideResizor = $asideResizor;
         return $this;
     }
 
-    public function 设置是否可调整左边栏区域(bool $是否可调整): static
-    {
-        return $this->setAsideResizor($是否可调整);
-    }
-
+    /**
+     * @param bool $asideSticky
+     * @return $this
+     */
     public function setAsideSticky(bool $asideSticky): static
     {
         $this->asideSticky = $asideSticky;
         return $this;
     }
 
-    public function 设置是否固定左边栏区域(bool $是否固定): static
-    {
-        return $this->setAsideSticky($是否固定);
-    }
-
+    /**
+     * @param int $asideMinWidth
+     * @return $this
+     */
     public function setAsideMinWidth(int $asideMinWidth): static
     {
         $this->asideMinWidth = $asideMinWidth;
         return $this;
     }
 
-    public function 设置边栏区域最小宽度(int $边栏区域最小宽度): static
-    {
-        return $this->setAsideMinWidth($边栏区域最小宽度);
-    }
-
+    /**
+     * @param int $asideMaxWidth
+     * @return $this
+     */
     public function setAsideMaxWidth(int $asideMaxWidth): static
     {
         $this->asideMaxWidth = $asideMaxWidth;
         return $this;
     }
 
-    public function 设置边栏区域最大宽度(int $边栏区域最大宽度): static
-    {
-        return $this->setAsideMaxWidth($边栏区域最大宽度);
-    }
-
+    /**
+     * @param SchemaNode|string|array $toolbar
+     * @return $this
+     */
     public function setToolbar(SchemaNode|string|array $toolbar): static
     {
         if(!empty($toolbar)){
@@ -134,121 +239,109 @@ class Page extends Module
         return $this;
     }
 
-    public function 设置右上角的内容(SchemaNode|string|array $内容): static
-    {
-        return $this->setToolbar($内容);
-    }
-
+    /**
+     * @param array $cssVars
+     * @return $this
+     */
     public function setCssVars(array $cssVars): static
     {
         $this->cssVars = $cssVars;
         return $this;
     }
 
-    public function 设置自定义CSS变量(array $自定义变量): static
-    {
-        return $this->setCssVars($自定义变量);
-    }
-
+    /**
+     * @param ClassName|string $toolbarClassName
+     * @return $this
+     */
     public function setToolbarClassName(ClassName|string $toolbarClassName): static
     {
         $this->toolbarClassName = $toolbarClassName;
         return $this;
     }
 
-    public function 设置右上角内容的类名(ClassName|string $类名): static
-    {
-        return $this->setToolbarClassName($类名);
-    }
-
+    /**
+     * @param ClassName|string $bodyClassName
+     * @return $this
+     */
     public function setBodyClassName(ClassName|string $bodyClassName): static
     {
         $this->bodyClassName = $bodyClassName;
         return $this;
     }
 
-    public function 设置主体区域的类名(ClassName|string $类名): static
-    {
-        return $this->setBodyClassName($类名);
-    }
-
+    /**
+     * @param ClassName|string $asideClassName
+     * @return $this
+     */
     public function setAsideClassName(ClassName|string $asideClassName): static
     {
         $this->asideClassName = $asideClassName;
         return $this;
     }
 
-    public function 设置左边栏区域类名(ClassName|string $类名): static
-    {
-        return $this->setAsideClassName($类名);
-    }
-
+    /**
+     * @param ClassName|string $headerClassName
+     * @return $this
+     */
     public function setHeaderClassName(ClassName|string $headerClassName): static
     {
         $this->headerClassName = $headerClassName;
         return $this;
     }
 
-    public function 设置顶部区域类名(ClassName|string $类名): static
-    {
-        return $this->setHeaderClassName($类名);
-    }
-
+    /**
+     * @param Api $initApi
+     * @return $this
+     */
     public function setInitApi(Api $initApi): static
     {
         $this->initApi = $initApi;
         return $this;
     }
 
-    public function 设置初始拉取数据接口(Api $接口): static
-    {
-        return $this->setInitApi($接口);
-    }
-
+    /**
+     * @param Condition $initFetchOn
+     * @return $this
+     */
     public function setInitFetchOn(Condition $initFetchOn): static
     {
         $this->initFetchOn = $initFetchOn;
         return $this;
     }
 
-    public function 设置初始拉取数据的表达式条件(Condition $表达式): static
-    {
-        return $this->setInitFetchOn($表达式);
-    }
-
+    /**
+     * @param Condition $stopAutoRefreshWhen
+     * @return $this
+     */
     public function setStopAutoRefreshWhen(Condition $stopAutoRefreshWhen): static
     {
         $this->stopAutoRefreshWhen = $stopAutoRefreshWhen;
         return $this;
     }
 
-    public function 设置停止刷新拉取数据条件(Condition $表达式): static
-    {
-        return $this->setStopAutoRefreshWhen($表达式);
-    }
-
+    /**
+     * @param int $interval
+     * @return $this
+     */
     public function setInterval(int $interval): static
     {
         $this->interval = $interval*1000;
         return $this;
     }
 
-    public function 设置刷新拉取数据的时间(int $刷新时间): static
-    {
-        return $this->setInterval($刷新时间);
-    }
-
+    /**
+     * @param bool $silentPolling
+     * @return $this
+     */
     public function setSilentPolling(bool $silentPolling): static
     {
         $this->silentPolling = $silentPolling;
         return $this;
     }
 
-    public function 设置是否加载刷新动画(bool $是否加载刷新动画): static
-    {
-        return $this->setSilentPolling($是否加载刷新动画);
-    }
-
+    /**
+     * @return array
+     */
     public function create(): array
     {
         $data = [];
@@ -356,13 +449,6 @@ class Page extends Module
                 $data['stopAutoRefreshWhen'] = $this->stopAutoRefreshWhen;
             }
         }
-
-
         return $data;
-    }
-
-    public function 创建(): array
-    {
-        return $this->create();
     }
 }
