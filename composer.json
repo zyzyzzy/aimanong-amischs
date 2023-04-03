@@ -1,8 +1,8 @@
 {
     "name": "aimanong/amischs",
     "description": "百度amis前端框架用PHP再封装",
-    "type": "l",
-    "minimum-stability": "dev",
+    "license": "MIT",
+    "language": "PHP",
     "autoload": {
         "psr-4": {
             "Aimanong\\Amischs\\": "src/"
