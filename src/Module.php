@@ -39,5 +39,4 @@ abstract class Module
     }
 
     abstract public function create(): array;
-    abstract public function 创建(): array;
 }
