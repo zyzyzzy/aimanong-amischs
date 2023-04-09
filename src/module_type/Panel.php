@@ -101,7 +101,7 @@ class Panel extends Module
         $data = [];
         $data['type'] = 'panel';
         empty($this->className) || ($data['className'] = $this->className);
-        empty($this->headerClassName) || ($this->headerClassName == 'panel-default') || ($data['headerClassName'] = $this->headerClassName);
+        empty($this->headerClassName) || ($this->headerClassName == 'panel-heading') || ($data['headerClassName'] = $this->headerClassName);
         empty($this->footerClassName) || ($this->footerClassName == 'panel-footer bg-light lter wrapper') || ($data['footerClassName'] = $this->footerClassName);
         empty($this->actionsClassName) || ($this->actionsClassName == 'panel-footer') || ($data['actionsClassName'] = $this->actionsClassName);
         empty($this->bodyClassName) || ($this->bodyClassName == 'panel-body') || ($data['bodyClassName'] = $this->bodyClassName);
