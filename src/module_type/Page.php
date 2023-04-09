@@ -25,12 +25,6 @@ use Aimanong\Amischs\SchemaNode;
 class Page extends Module
 {
     /**
-     * 页面标题
-     * @var SchemaNode|string|array
-     */
-    protected SchemaNode|string|array $title = '';
-
-    /**
      * 页面副标题
      * @var SchemaNode|string|array
      */

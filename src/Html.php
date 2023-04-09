@@ -59,7 +59,7 @@ class Html
                 <body>
                     <div id="root" class="app-wrapper"></div>
                     <script src="$this->sdkjs"></script>
-                    <script module_type="text/javascript">
+                    <script type="text/javascript">
                         (function(){
                             let amis = amisRequire('amis/embed');
                             let amisScopen = amis.embed('#root',$amisJson,$amisPropsData)
