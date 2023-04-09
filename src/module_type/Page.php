@@ -24,7 +24,6 @@ use Aimanong\Amischs\SchemaNode;
 
 class Page extends Module
 {
-    public string $type = 'page';
     /**
      * 页面标题
      * @var SchemaNode|string|array
@@ -143,11 +142,6 @@ class Page extends Module
      * @param SchemaNode|string|array $title
      * @return $this
      */
-    public function setTitle(SchemaNode|string|array $title): static
-    {
-        $this->title = $title;
-        return $this;
-    }
 
     /**
      * @param SchemaNode|string|array $subTitle

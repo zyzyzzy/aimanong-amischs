@@ -7,16 +7,24 @@ use Aimanong\Amischs\attribute\ClassName;
 use Aimanong\Amischs\Condition;
 use Aimanong\Amischs\SchemaNode;
 
+/**
+ * @method $this setTitle(SchemaNode|string|array $title)
+ * @method $this setSubTitle(SchemaNode|string|array $subTitle)
+ * @method $this setRemark(string|Remark $contentOrRemark)
+ * @method $this setAside(object|array|string $aside)
+ * @method $this setAsideResizor(bool $asideResizor)
+ * @method $this setAsideSticky(bool $asideSticky)
+ * @method $this setAsideMaxWidth(int $asideMaxWidth)
+ * @method $this setAsideMinWidth(int $asideMinWidth)
+ * @method $this setAsideClassName(ClassName|string $asideClassName)
+ * @method $this setCssVars(array $cssVars)
+ */
 class 页面 extends Page
 {
     /**
      * @param SchemaNode|string|array $title
      * @return $this
      */
-    public function 设置页面标题(SchemaNode|string|array $title): static
-    {
-        return $this->setTitle($title);
-    }
 
     /**
      * @param SchemaNode|string|array $subTitle

@@ -8,19 +8,32 @@ abstract class Module
 {
     protected string $type;
     protected array $data = []; //本域数据
+    protected string|array $title = ''; //标题
     protected ClassName|string $className = ''; //外层 dom 类名
-    protected SchemaNode|string|array $body = ''; //往页面的内容区域加内容
+    protected string|array $body = []; //往页面的内容区域加内容
     public function __construct()
     {
     }
 
-    public function setBody(SchemaNode|string|array $body): static
+    public function setTitle(string|array $title): static
     {
-        $this->body = $body;
+        $this->title = $title;
         return $this;
     }
 
-    public function 设置主体数据内容(SchemaNode|string|array $内容): static
+    public function 设置标题(string|array $标题): static
+    {
+        $this->setTitle($标题);
+        return $this;
+    }
+
+    public function setBody(string|array $body): static
+    {
+        $this->body[] = $body;
+        return $this;
+    }
+
+    public function 设置主体数据内容(string|array $内容): static
     {
         return $this->setBody($内容);
     }
@@ -37,6 +50,18 @@ abstract class Module
     {
         return $this->setClassName($类名);
     }
+
+    public function setData(array $data): static
+    {
+        $this->data[] = $data;
+        return $this;
+    }
+
+    public function 设置本域数据(array $本域数据): static
+    {
+        return $this->setData($本域数据);
+    }
+
 
     abstract public function create(): array;
 }
