@@ -335,9 +335,9 @@ class Page extends Module
         $data = [];
         $data['type'] = 'page';
 
-        if($this->title instanceof SchemaNode){
-            $data['title'] = ($this->title)->create();
-        }elseif(!empty($this->title)){
+        ($this->debug === false) || ($data['debug'] = true);
+
+        if(!empty($this->title)){
             $data['title'] = $this->title;
         }
         if(!empty($this->title)){
@@ -346,15 +346,11 @@ class Page extends Module
             }
         }
 
-        if($this->subTitle instanceof SchemaNode){
-            $data['subTitle'] = ($this->subTitle)->create();
-        }elseif(!empty($this->subTitle)){
+       if(!empty($this->subTitle)){
             $data['subTitle'] = $this->subTitle;
         }
 
-        if($this->aside instanceof SchemaNode){
-            $data['aside'] = ($this->aside)->create();
-        }elseif(!empty($this->aside)){
+       if(!empty($this->aside)){
             $data['aside'] = $this->aside;
         }
 
@@ -369,21 +365,15 @@ class Page extends Module
             $data['asideSticky'] = $this->asideSticky;
         }
 
-        if($this->toolbar instanceof SchemaNode){
-            $data['toolbar'] = ($this->toolbar)->create();
-        }elseif(!empty($this->toolbar)){
+       if(!empty($this->toolbar)){
             $data['toolbar'] = $this->toolbar;
         }
 
-        if($this->body instanceof SchemaNode){
-            $data['body'] = ($this->body)->create();
-        }elseif(!empty($this->body)){
+        if(!empty($this->body)){
             $data['body'] = $this->body;
         }
 
-        if($this->className instanceof ClassName){
-            $data['className'] = ($this->className)->create();
-        }elseif(!empty($this->className)){
+       if(!empty($this->className)){
             $data['className'] = $this->className;
         }
 
@@ -391,49 +381,35 @@ class Page extends Module
             $data['cssVars'] = $this->cssVars;
         }
 
-        if($this->toolbarClassName instanceof ClassName){
-            $data['toolbarClassName'] = ($this->toolbarClassName)->create();
-        }elseif(!empty($this->toolbarClassName)){
+        if(!empty($this->toolbarClassName)){
             $data['toolbarClassName'] = $this->toolbarClassName;
         }
 
-        if($this->bodyClassName instanceof ClassName){
-            $data['bodyClassName'] = ($this->bodyClassName)->create();
-        }elseif(!empty($this->bodyClassName)){
+        if(!empty($this->bodyClassName)){
             $data['bodyClassName'] = $this->bodyClassName;
         }
 
-        if($this->asideClassName instanceof ClassName){
-            $data['asideClassName'] = ($this->asideClassName)->create();
-        }elseif(!empty($this->asideClassName)){
+        if(!empty($this->asideClassName)){
             $data['asideClassName'] = $this->asideClassName;
         }
 
-        if($this->headerClassName instanceof ClassName){
-            $data['headerClassName'] = ($this->headerClassName)->create();
-        }elseif(!empty($this->headerClassName)){
+        if(!empty($this->headerClassName)){
             $data['headerClassName'] = $this->headerClassName;
         }
 
-        if($this->initApi instanceof Api){
-            $data['initApi'] = ($this->initApi)->create();
-        }elseif(!empty($this->initApi)){
+       if(!empty($this->initApi)){
             $data['initApi'] = $this->initApi;
         }
 
         if(!empty($data['initApi'])){
-            if($this->initFetchOn instanceof Condition){
-                $data['initFetchOn'] = ($this->initFetchOn)->create();
-            }elseif(!empty($this->initFetchOn)){
+            if(!empty($this->initFetchOn)){
                 $data['initFetchOn'] = $this->initFetchOn;
             }
             if(!empty($this->interval)){
                 $data['interval'] = $this->interval;
             }
             $data['silentPolling'] = $this->silentPolling;
-            if($this->stopAutoRefreshWhen instanceof Condition){
-                $data['stopAutoRefreshWhen'] = ($this->stopAutoRefreshWhen)->create();
-            }elseif(!empty($this->initApi)){
+            if(!empty($this->initApi)){
                 $data['stopAutoRefreshWhen'] = $this->stopAutoRefreshWhen;
             }
         }

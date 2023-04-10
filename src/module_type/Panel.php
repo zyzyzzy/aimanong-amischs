@@ -100,6 +100,7 @@ class Panel extends Module
     {
         $data = [];
         $data['type'] = 'panel';
+        ($this->debug === false) || ($data['debug'] = true);
         empty($this->className) || ($data['className'] = $this->className);
         empty($this->headerClassName) || ($this->headerClassName == 'panel-heading') || ($data['headerClassName'] = $this->headerClassName);
         empty($this->footerClassName) || ($this->footerClassName == 'panel-footer bg-light lter wrapper') || ($data['footerClassName'] = $this->footerClassName);

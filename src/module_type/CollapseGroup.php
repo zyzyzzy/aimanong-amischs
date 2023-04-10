@@ -71,6 +71,7 @@ class CollapseGroup extends Module
     public function create(): array
     {
         $data = [];
+        ($this->debug === false) || ($data['debug'] = true);
         $data['type'] = 'collapse-group';
         $data['activeKey'] = $this->activeKey;
         empty($this->accordion) || ($data['accordion'] = true);

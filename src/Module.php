@@ -7,12 +7,25 @@ use Aimanong\Amischs\attribute\ClassName;
 abstract class Module
 {
     protected string $type;
+    protected bool $debug = false;
     protected array $data = []; //本域数据
     protected string|array $title = ''; //标题
     protected ClassName|string $className = ''; //外层 dom 类名
     protected string|array $body = []; //往页面的内容区域加内容
     public function __construct()
     {
+    }
+
+    public function setDebug(bool $debug): static
+    {
+        $this->debug = $debug;
+        return $this;
+    }
+
+    public function 设置调试模式(bool $调试模式): static
+    {
+        $this->setDebug($调试模式);
+        return $this;
     }
 
     public function setTitle(string|array $title): static

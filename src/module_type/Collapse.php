@@ -88,6 +88,7 @@ class Collapse extends Module
     public function create(): array
     {
         $data = [];
+        ($this->debug === false) || ($data['debug'] = true);
         $data['type'] = 'collapse';
         $data['key'] = $this->key;
         $data['header'] = $this->header;

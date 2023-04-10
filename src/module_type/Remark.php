@@ -84,6 +84,7 @@ class Remark extends Module
             'type' => 'remark',
             'content' => $this->content,
         ];
+        ($this->debug === false) || ($data['debug'] = true);
         if(!empty($this->placement) && $this->placement != 'right'){
             $data['placement'] = $this->placement;
         }
