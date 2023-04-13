@@ -6,8 +6,12 @@ use Aimanong\Amischs\module_type\CollapseGroup;
 use Aimanong\Amischs\module_type\Divider;
 use Aimanong\Amischs\module_type\Page;
 use Aimanong\Amischs\module_type\Panel;
+use Aimanong\Amischs\module_type\Tabs;
+use Aimanong\Amischs\module_type\TabsGroup;
 use Aimanong\Amischs\module_type\分割线;
 use Aimanong\Amischs\module_type\折叠器组;
+use Aimanong\Amischs\module_type\选项卡;
+use Aimanong\Amischs\module_type\选项卡组;
 use Aimanong\Amischs\module_type\面板;
 use Aimanong\Amischs\module_type\页面;
 
@@ -59,6 +63,26 @@ class SchemaNode
     public function 面板(): 面板
     {
         return new 面板();
+    }
+
+    public function tabsGroup(): TabsGroup
+    {
+        return new TabsGroup();
+    }
+
+    public function 选项卡组(): 选项卡组
+    {
+        return new 选项卡组();
+    }
+
+    public function tabs(): Tabs
+    {
+        return new Tabs();
+    }
+
+    public function 选项卡(): 选项卡
+    {
+        return new 选项卡();
     }
 
     public function create(string|object $objectName)

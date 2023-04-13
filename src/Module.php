@@ -11,11 +11,33 @@ abstract class Module
     protected array $data = []; //本域数据
     protected string|array $title = ''; //标题
     protected ClassName|string $className = ''; //外层 dom 类名
+    protected string $icon = '';
+    protected string $iconPosition = '';
     protected string|array $body = []; //往页面的内容区域加内容
     public function __construct()
     {
     }
 
+    public function setIconPosition(string $iconPosition): static
+    {
+        if(!empty($iconPosition) && $iconPosition != 'left'){
+            $this->iconPosition = 'right';
+        }
+        return $this;
+    }
+    public function 设置图标位置(string $图标位置): static
+    {
+        return $this->setIconPosition($图标位置);
+    }
+    public function setIcon(string $icon): static
+    {
+        $this->icon = $icon;
+        return $this;
+    }
+    public function 设置图标(string $图标): static
+    {
+        return $this->setIcon($图标);
+    }
     public function setDebug(bool $debug): static
     {
         $this->debug = $debug;
